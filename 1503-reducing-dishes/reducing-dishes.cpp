@@ -1,23 +1,22 @@
 class Solution {
 public:
-    int solve(int index,int time,vector<vector<int>>&dp,vector<int>&satisfaction){
+    int solve(vector<int>&satisfaction){
         int n=satisfaction.size();
-        if(index>=n){
-            return 0;
+        vector<vector<int>>dp(n+1,(vector<int>(n+2,0)));
+       for(int index=n-1;index>=0;index--){
+        for (int time = index+1; time >= 1; time--) {
+            int inc = satisfaction[index] * time + dp[index + 1][time + 1];
+            int ex = dp[index + 1][time];
+            dp[index][time] = max(inc, ex);
         }
-        if(dp[index][time]!=-1){
-            return dp[index][time];
-        }
-        int inc=satisfaction[index]*time+solve(index+1,time+1,dp,satisfaction);
-        int ex=0+solve(index+1,time,dp,satisfaction);
-        dp[index][time]=max(inc,ex);
-        return dp[index][time];
+      
+       }
+          return dp[0][1];
     }
     int maxSatisfaction(vector<int>& satisfaction) {
-        int n=satisfaction.size();
         sort(satisfaction.begin(),satisfaction.end());
-        vector<vector<int>>dp(n+1,(vector<int>(n+1,-1)));
-        return solve(0,1,dp,satisfaction);
+        
+        return solve(satisfaction);
         
     }
 };
