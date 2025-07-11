@@ -1,21 +1,28 @@
 class Solution {
-public:
-     bool canJump(vector<int>& nums) {
-        vector<int> dp(nums.size(), -1);
-        return create(nums, 0, dp);
-    }
-private:
-    bool create(vector<int>& nums, int idx, vector<int>& dp) {
-        if(idx == nums.size() -1) return true;
-        if(nums[idx] == 0) return false;
-        
-        if(dp[idx] != -1) return dp[idx]; //overlapping subproblems
-        int reach = idx + nums[idx];
-        for(int jump=idx + 1; jump <= reach; jump++) {
-            if(jump < nums.size() && create(nums, jump, dp)) 
-                return dp[idx] = true; //memoizing for particular index.
+    private:
+bool solve(vector<int>&nums,int idx,vector<int>&dp){
+        int n=nums.size();
+        if(idx==(n-1)){
+            return true;
         }
-        
-        return dp[idx] = false; //memoizing for particular index.
+        if(nums[idx]==0){
+            return false;
+        }
+        if(dp[idx]!=-1){
+            return dp[idx];
+        }
+        int reach=idx+nums[idx];
+        for(int i=idx+1;i<=reach;i++){
+            if(i<nums.size() && solve(nums,i,dp) ){
+            return dp[idx]=true;
+            }
+        }
+        return dp[idx]=false;
+    }
+    public:
+    bool canJump(vector<int>& nums) {
+        int n=nums.size();
+        vector<int>dp(n,-1);
+        return solve(nums,0,dp);
     }
 };
