@@ -37,9 +37,6 @@ public:
         return dp[0][0];
     }
     int longestCommonSubsequence(string text1, string text2) {
-        int n = text1.size();
-        int m = text2.size();
-        vector<vector<int>> dp(n, vector<int>(m, -1));
         return solveTab(text1, text2);
     }
 };
