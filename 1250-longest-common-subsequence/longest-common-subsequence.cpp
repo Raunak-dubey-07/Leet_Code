@@ -15,10 +15,23 @@ public:
         int b=solve(text1,text2,idx1,idx2+1,dp);
         return dp[idx1][idx2]=max(a,b);
     }
-    int longestCommonSubsequence(string text1, string text2) {
+    int solveTab(string&text1,string&text2){
         int n=text1.size();
         int m=text2.size();
-        vector<vector<int>>dp(n,vector<int>(m,-1));
-        return solve(text1,text2,0,0,dp);
+        vector<vector<int>>dp(n+1,vector<int>(m+1,0));
+        for(int i=n-1;i>=0;i--){
+            for(int j=m-1;j>=0;j--){
+                if(text1[i]==text2[j]){
+                    dp[i][j]=1+dp[i+1][j+1];
+                }
+                else{
+                    dp[i][j]=max(dp[i][j+1],dp[i+1][j]);
+                }
+            }
+        }
+        return dp[0][0];
+    }
+    int longestCommonSubsequence(string text1, string text2) {
+        return solveTab(text1,text2);
     }
 };
