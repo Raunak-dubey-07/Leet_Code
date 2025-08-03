@@ -11,21 +11,14 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root,int count,int &ans){
+  int height(TreeNode*root){
         if(root==NULL){
-            ans=max(ans,count);
-            return;
+            return 0;
         }
-        count++;
-        inorder(root->left,count,ans);
-        inorder(root->right,count,ans);
+        return 1+max(height(root->left),height(root->right));
     }
 
-
     int maxDepth(TreeNode* root) {
-        int count=0;
-        int ans=0;
-        inorder(root,count,ans);
-        return ans;
+        return height(root);
     }
 };
