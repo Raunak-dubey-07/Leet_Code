@@ -5,6 +5,9 @@ public:
         if(k==n){
             return true;
         }
+        if(n<k){
+            return false;
+        }
         unordered_map<char,int>mp;
         for(int i=0;i<n;i++){
             mp[s[i]]++;
@@ -15,7 +18,7 @@ public:
                 odd++;
             }
         }
-        if(k<odd || n<k){
+        if(k<odd){
             return false;
         }
         return true;
