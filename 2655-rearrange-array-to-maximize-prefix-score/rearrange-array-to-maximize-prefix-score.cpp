@@ -7,8 +7,8 @@ public:
         int i=0;
         while(sum>=0 && i<n){
             sum+=nums[i];
-            cout<<"sum "<<sum<<endl;
-            cout<<nums[i]<<endl;
+            // cout<<"sum "<<sum<<endl;
+            // cout<<nums[i]<<endl;
             if(sum<=0){
                 break;
             }
