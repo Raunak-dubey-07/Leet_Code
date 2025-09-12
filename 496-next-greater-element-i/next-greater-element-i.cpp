@@ -10,12 +10,11 @@ public:
             }
             if(st.empty()){
                 mp[nums2[i]]=-1;
-                st.push(nums2[i]);
             }
             else{
             mp[nums2[i]]=st.top();
-            st.push(nums2[i]);
             }
+            st.push(nums2[i]);
         }
         int m=nums1.size();
         for(int i=0;i<m;i++){
