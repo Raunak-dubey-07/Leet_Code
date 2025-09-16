@@ -13,9 +13,7 @@ public:
                 if (mp[fruits[l]] == 0) {
                     mp.erase(fruits[l]);
                 }
-                cout<<mp.size()<<endl;
                 l++;
-                cout<<l<<endl;
             }
              ans = max(ans, r - l + 1);
              r++;
