@@ -9,9 +9,8 @@ public:
         if(sum<k){
             return 0;
         }
-        sort(candies.begin(),candies.end(),greater<int>());
         int low=1;
-        int high=candies[0];
+        int high=high = *max_element(candies.begin(), candies.end());;
         while(low<high){
             long long total=0;
             int mid=(low+high+1)/2;
