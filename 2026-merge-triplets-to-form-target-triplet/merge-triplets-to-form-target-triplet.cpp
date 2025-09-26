@@ -13,7 +13,7 @@ public:
                 continue;
 
             } else {
-                cout<<triplets[i][2]<<" "<<target[2]<<endl;
+                //cout<<triplets[i][2]<<" "<<target[2]<<endl;
                 if (triplets[i][0] == target[0]) {
                     //cout<<triplets[i][0]<<endl;
                     a = true;
@@ -24,7 +24,7 @@ public:
                     //cout<<triplets[i][2]<<endl;
                     c = true;
                 }
-                cout<<a<<b<<c<<endl;
+                //cout<<a<<b<<c<<endl;
                 if (a && b && c) {
                 return true;
             }
