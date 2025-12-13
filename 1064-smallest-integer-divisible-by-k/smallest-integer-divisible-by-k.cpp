@@ -4,10 +4,9 @@ public:
         if(k%2==0 || k%5==0){
             return -1;
         }
-        long long rem=0;
+        int rem=0;
         for(int i=1;i<=k;i++){
             rem=(rem*10+1)%k;
-            cout<<rem<<endl;
             if(rem%k==0){
                 return i;
             }
