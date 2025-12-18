@@ -5,7 +5,7 @@ public:
         int x = king[0];
         int y = king[1];
         vector<vector<int>>ans;
-        vector<vector<bool>> attack(8, vector<bool>(8, false));
+        vector<vector<int>> attack(8, vector<int>(8,0));
         for (int i = 0; i < queens.size(); i++) {
             attack[queens[i][0]][queens[i][1]] = true;
         }
