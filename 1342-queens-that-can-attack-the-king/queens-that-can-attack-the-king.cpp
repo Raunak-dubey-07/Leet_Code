@@ -11,28 +11,24 @@ public:
         }
         for (int i = x; i < 8; i++) {
             if (attack[i][y]) {
-                cout<<1<<" "<< i<<" "<<y<<endl;
                 ans.push_back({i,y});
                 break;
             }
         }
         for (int i = x; i >= 0; i--) {
             if (attack[i][y]) {
-                cout<<2<<" "<< i<<" "<<y<<endl;
                 ans.push_back({i,y});
                 break;
             }
         }
         for (int i = y; i < 8; i++) {
             if (attack[x][i]) {
-                cout<<3<<" "<< x<<" "<<i<<endl;
                ans.push_back({x,i});
                 break;
             }
         }
         for (int i = y; i >= 0; i--) {
             if (attack[x][i]) {
-                cout<<4<<" "<< x<<" "<<i<<endl;
                 ans.push_back({x,i});
                 break;
             }
@@ -41,7 +37,6 @@ public:
         int j = y;
         while (i < 8 && j < 8) {
             if (attack[i][j]) {
-                cout<<5<<" "<< i<<" "<<j<<endl;
                 ans.push_back({i,j});
                 break;
             }
@@ -52,7 +47,6 @@ public:
         j = y;
         while (i >= 0 && j >= 0) {
             if (attack[i][j]) {
-                cout<<6<<" "<< i<<" "<<j<<endl;
               ans.push_back({i,j});
                 break;
             }
@@ -63,7 +57,6 @@ public:
         j = y;
         while (i >= 0 && j < 8) {
             if (attack[i][j]) {
-                cout<<7<<" "<< i<<" "<<j<<endl;
               ans.push_back({i,j});
                 break;
             }
@@ -74,7 +67,6 @@ public:
         j = y;
         while (i < 8 && j >=0) {
             if (attack[i][j]) {
-                cout<<8<<" "<< i<<" "<<j<<endl;
               ans.push_back({i,j});
                 break;
             }
