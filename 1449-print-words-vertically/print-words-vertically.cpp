@@ -5,7 +5,7 @@ public:
         int ans=0;
         int n=s.size();
         int r=1;
-        for(int i=0;i<s.size();i++){
+        for(int i=0;i<n;i++){
             if(s[i]==' '){
                 r++;
                 ans=max(c,ans);
