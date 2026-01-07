@@ -28,7 +28,6 @@ public:
                 dfs(mp, visited, i, count);
             }
             if(count>0){
-                cout<<count<<endl;
             res.push_back(count);
             }
         }
@@ -38,8 +37,7 @@ public:
                 long long product=res[i];
                 product *= res[j];
                 result+=product;
-            }
-            
+            } 
         }
         return result;
     }
