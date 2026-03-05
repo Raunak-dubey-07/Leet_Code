@@ -1,21 +1,14 @@
 class Solution {
 public:
     
-    bool ispalindrome(int i,int j,string&s){
-        while(i<=j){
-            if(s[i]!=s[j]){
-                return false;
-            }
-            i++;
-            j--;
-        }
-        return true;
-    }
-    bool solve(int i,int j,string &s,vector<vector<int>>&dp){
-        if(dp[i][j]!=-1){
-            return dp[i][j];
-        }
-        return dp[i][j]=ispalindrome(i,j,s);
+   bool solve(int i,int j,string &s,vector<vector<int>>&dp){
+        if(i>=j) return true;
+
+        if(dp[i][j]!=-1) return dp[i][j];
+
+        if(s[i]!=s[j]) return dp[i][j]=false;
+
+        return dp[i][j]=solve(i+1,j-1,s,dp);
     }
     string longestPalindrome(string s) {
         int n=s.size();
