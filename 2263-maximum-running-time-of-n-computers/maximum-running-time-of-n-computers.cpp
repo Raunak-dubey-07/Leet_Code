@@ -11,8 +11,8 @@ public:
         return total>=n*mid;
     }
     long long maxRunTime(int n, vector<int>& batteries) {
-        long long l=0;
-        long long r=accumulate(batteries.begin(),batteries.end(),0LL);
+        long long l=*min_element(batteries.begin(),batteries.end());
+        long long r=(accumulate(batteries.begin(),batteries.end(),0LL))/n;
         long long ans=0;
 
         while(l<=r){
