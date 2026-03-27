@@ -13,6 +13,7 @@ public:
     long long maxRunTime(int n, vector<int>& batteries) {
         long long l=*min_element(batteries.begin(),batteries.end());
         long long r=(accumulate(batteries.begin(),batteries.end(),0LL))/n;
+        cout<<r<<endl;
         long long ans=0;
 
         while(l<=r){
