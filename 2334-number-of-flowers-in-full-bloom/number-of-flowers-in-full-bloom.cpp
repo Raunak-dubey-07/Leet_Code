@@ -15,7 +15,6 @@ public:
         for(int i=0;i<n;i++){
             int x=upper_bound(start.begin(),start.end(),people[i])-start.begin();
         int y=lower_bound(end.begin(),end.end(),people[i])-end.begin();
-        cout<<people[i]<<" "<<x<<" "<<y<<endl;
         result.push_back(x-y);
         }
         return result;
