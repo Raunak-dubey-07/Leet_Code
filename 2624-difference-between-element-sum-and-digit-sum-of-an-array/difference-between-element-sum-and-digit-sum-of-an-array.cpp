@@ -4,7 +4,6 @@ public:
         int n=nums.size();
         int sum=0;
         int digitsum=0;
-        unordered_map<int,int>mp;
         for(int i=0;i<n;i++){
             sum+=nums[i];
             while(nums[i]!=0){
