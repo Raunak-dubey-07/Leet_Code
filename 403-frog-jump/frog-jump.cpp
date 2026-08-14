@@ -32,7 +32,7 @@ public:
         for(int i=0;i<n;i++){
             mp[stones[i]]=i;
         }
-        vector<vector<int>> dp(n, vector<int>(n + 1, -1));
+        vector<vector<int>> dp(n, vector<int>(n , -1));
 
         return solve(stones, mp, dp, 0, 0);
         
