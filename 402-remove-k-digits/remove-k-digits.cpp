@@ -1,48 +1,48 @@
 class Solution {
 public:
     string removeKdigits(string num, int k) {
-        int n=num.size();
-        int i=1;
-        string ans;
-        stack<char>st;
-        st.push(num[0]);
-        while(i<n){
-            if(num[i]<=st.top() && k){
-                while((!st.empty() && k)&&num[i]<st.top()){
+        stack<char> st;
+        for (int i = 0; i < num.size(); i++) {
+            if (st.empty() && num[i] == '0') {
+                continue;
+            } else if (st.empty()) {
+                st.push(num[i]);
+            }
+
+            else {
+                while (k && !st.empty() && st.top() > num[i]) {
                     st.pop();
                     k--;
+                    if (k == 0) {
+                        break;
+                    }
                 }
                 st.push(num[i]);
             }
-            else{
-                st.push(num[i]);
-            }
-            i++;
+            cout<<st.top()<<endl;
         }
-        while(k){
+        while (k && !st.empty()) {
             st.pop();
             k--;
         }
-        int c=0;
-        while(!st.empty()){
-            if(st.top()=='0'){
-                c++;
-            }
-            else{
-                c=0;
-            }
-            ans.push_back(st.top());
-            st.pop();
-        }
-        if(ans.size()==0){
+        if (st.empty()) {
             return "0";
+        } else {
+            string s="";
+            string p="";
+            while (!st.empty()) {
+                p +=st.top();
+                if(st.top()!='0'){
+                    s+=p;
+                    p="";
+                }
+                st.pop();
+            }
+            if(s.empty()){
+                return "0";
+            }
+            reverse(s.begin(), s.end());
+            return s;
         }
-        reverse(ans.begin(),ans.end());
-        if(ans.substr(c, ans.size()).size()==0){
-            return "0";
-        }
-        
-            return ans.substr(c, ans.size());
-        
-     }
+    }
 };
