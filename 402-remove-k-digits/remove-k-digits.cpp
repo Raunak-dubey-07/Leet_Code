@@ -19,7 +19,7 @@ public:
                 }
                 st.push(num[i]);
             }
-            cout<<st.top()<<endl;
+            //cout<<st.top()<<endl;
         }
         while (k && !st.empty()) {
             st.pop();
