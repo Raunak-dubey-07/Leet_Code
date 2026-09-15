@@ -25,8 +25,6 @@ public:
             string s=to_string(d);
             string p=s.substr(0,w);
             string q=s.substr(w);
-            cout<<stoll(q)<<endl;
-            cout<<stoll(p)<<endl;
             ans =(ans+ power(stoll(p),stoll(q),mod) % mod)%mod;
         }
         return ans;
