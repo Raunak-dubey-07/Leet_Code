@@ -1,44 +1,59 @@
 class Solution {
 public:
-    void dfs(unordered_map < int, vector<int>>& adj, vector<int>& visited,
-             int s, int &count) {
-        visited[s] = true;
-        count++;
-        for (int i : adj[s])
-            if (visited[i] == false)
-                dfs(adj, visited, i, count);
-    }
+    vector<int>parent;
+    vector<int>rank;
+    void Union(int u,int v){
+        u=findParent(parent,u);
+        v=findParent(parent,v);
+        if(u!=v){
+            if(rank[u]<rank[v]){
+                parent[u]=v;
+                rank[v]=rank[v]+rank[u]+1;
+            }
+            else if(rank[v]<rank[u]){
+                parent[v]=u;
+                rank[u]=rank[u]+rank[v]+1;
+            }
+            else{
+                parent[v]=u;
+                rank[u]=2*rank[u]+1;
+            }
+        }
 
+    }
+    int findParent(vector<int>&parent,int u){
+        //cout<<u<<endl;
+        if(u==parent[u]){
+            return u;
+        }
+        return parent[u]=findParent(parent,parent[u]);
+    }
     long long countPairs(int n, vector<vector<int>>& edges) {
-        unordered_map<int, vector<int>> mp;
-        for (int i = 0; i < edges.size(); i++) {
-            int u = edges[i][0];
-            int v = edges[i][1];
-            mp[u].push_back(v);
-            mp[v].push_back(u);
+        parent.resize(n);
+        rank.resize(n,0);
+        for(int i=0;i<n;i++){
+            parent[i]=i;
+
         }
-        if(edges.size()==0){
-            return (1LL*(n-1)*1LL*n)/2;
-        }
-        vector<int> res;
-        vector<int> visited(n, 0);
-        for (int i = 0; i < n; i++) {
-            int count = 0;
-            if (!visited[i]) {
-                dfs(mp, visited, i, count);
-            }
-            if(count>0){
-            res.push_back(count);
+        for(int i=0;i<edges.size();i++){
+            int u=findParent(parent,edges[i][0]);
+            int v=findParent(parent,edges[i][1]);
+            if(u!=v){
+                Union(u,v);
             }
         }
-        long long result=0;
-        for (int i = 0; i < res.size(); i++) {
-            for (int j = i+1; j <res.size(); j++) {
-                long long product=res[i];
-                product *= res[j];
-                result+=product;
-            } 
+        long long prev=0;
+        long long ans=0;
+        for(int i=0;i<n;i++){
+            int u=findParent(parent,i);
+             cout<<u<<endl;
+            if(rank[u]>=0){
+                 cout<<"rank "<<rank[u]+1<<endl;
+                ans+=(prev*(rank[u]+1));
+                prev+=(rank[u]+1);
+                rank[u]=-1;
+            }
         }
-        return result;
+        return ans;
     }
 };
