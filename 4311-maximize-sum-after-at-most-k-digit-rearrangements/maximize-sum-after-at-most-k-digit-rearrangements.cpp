@@ -11,7 +11,7 @@ public:
                 string s = to_string(nums[i]);
                 sort(s.begin(), s.end(), greater<char>());
                 gain.push_back(stoi(s)-nums[i]);
-                cout<<gain.back()<<endl;
+                //cout<<gain.back()<<endl;
             sum+=nums[i];
         }
         sort(gain.begin(),gain.end(),greater<int>());
